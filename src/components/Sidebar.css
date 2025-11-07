@@ -1,0 +1,77 @@
+/* 🌸 Sidebar - soft peach blush to match banner exactly */
+.sidebar {
+    width: 220px;
+    background: linear-gradient(180deg, #ffecd1 0%, #fff6eb 100%);
+    border-right: 2px solid #ffd3a4;
+    box-shadow: 2px 0 10px rgba(255, 211, 164, 0.3);
+    padding: 1.8rem 1.5rem;
+    flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s ease, background 0.3s ease;
+    z-index: 2;
+  }
+  
+  /* ✨ Favorite box blends smoothly */
+  .favorite-count {
+    background: #fff7ef;
+    color: #c66d15;
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin-top: 15px;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(255, 180, 100, 0.15);
+    transition: all 0.2s ease;
+  }
+  
+  .favorite-count:hover {
+    background: #ffe7cc;
+    transform: scale(1.05);
+  }
+  
+  /* 💕 Toggle button for collapsing */
+  .collapse-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 26px; /* slightly larger for visibility */
+    margin-bottom: 20px;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    color: #b56620; /* warm caramel tone */
+    text-align: center;
+  }
+  
+  .collapse-btn:hover {
+    transform: scale(1.15);
+    filter: brightness(1.15);
+  }
+  
+  /* 📱 Collapsed version */
+  .sidebar.collapsed {
+    width: 70px;
+    text-align: center;
+    padding: 1.2rem 0.5rem;
+    transition: width 0.3s ease;
+  }
+  
+  /* 🖋 Sidebar text styles */
+  .sidebar h2 {
+    color: #e67300;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  
+  .sidebar p {
+    color: #79410a !important;
+    font-size: 0.95rem;
+    margin-top: 0.25rem;
+    text-align: center;
+  }
+  
+  .sidebar h2:hover {
+    text-shadow: 0 2px 6px rgba(255, 166, 77, 0.4);
+    transition: text-shadow 0.3s ease;
+  }
+  

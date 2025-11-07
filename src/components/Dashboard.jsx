@@ -17,7 +17,7 @@ import {
 } from "recharts";
 import "./Dashboard.css";
 
-function Dashboard() {
+function Dashboard({ setFavoritesCount }) {
   const [recipes, setRecipes] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterCuisine, setFilterCuisine] = useState("");
@@ -49,19 +49,20 @@ function Dashboard() {
     filterCuisine ? recipe.cuisine === filterCuisine : true
   );
 
-  // ✅ Handle favorites
+  // ✅ Handle favorites (updates sidebar count)
   const toggleFavorite = (recipe) => {
-    if (favorites.find((fav) => fav.id === recipe.id)) {
-      setFavorites(favorites.filter((fav) => fav.id !== recipe.id));
-    } else {
-      setFavorites([...favorites, recipe]);
-    }
+    const updatedFavorites = favorites.find((fav) => fav.id === recipe.id)
+      ? favorites.filter((fav) => fav.id !== recipe.id)
+      : [...favorites, recipe];
+
+    setFavorites(updatedFavorites);
+    setFavoritesCount(updatedFavorites.length); // 🔥 syncs count with sidebar
   };
 
   const displayedRecipes = showFavorites ? favorites : filteredRecipes;
   const totalRecipes = filteredRecipes.length;
 
-  // ✅ Chart data for visualization
+  // ✅ Chart data
   const cuisineCounts = [
     { name: "Italian", value: recipes.filter((r) => r.title.includes("Italian")).length },
     { name: "Asian", value: recipes.filter((r) => r.title.includes("Asian")).length },
@@ -78,6 +79,7 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
+      {/* 🧭 Header (below sidebar) */}
       <Header />
 
       {/* 🔍 Search Bar */}
@@ -97,7 +99,7 @@ function Dashboard() {
         <option value="American">American</option>
       </select>
 
-      {/* 💛 Favorites Button */}
+      {/* 💛 Favorites Toggle */}
       <button className="toggle-btn" onClick={() => setShowFavorites(!showFavorites)}>
         {showFavorites ? "Show All Recipes" : "❤️ Show Favorites Only"}
       </button>
@@ -111,7 +113,7 @@ function Dashboard() {
       {/* ⚠️ Error Message */}
       {error && <p className="error">{error}</p>}
 
-      {/* 🧾 Recipes List */}
+      {/* 🧾 Recipe List */}
       {displayedRecipes.length === 0 ? (
         <p className="empty">No recipes found ❌</p>
       ) : (

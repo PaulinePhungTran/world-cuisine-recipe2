@@ -5,11 +5,23 @@ body {
   }
   
   .header {
-    background: #ffecd1;
-    padding: 20px;
+    background: linear-gradient(180deg, #ffecd1 0%, #fff6eb 100%);
     border-bottom: 2px solid #ffd3a4;
+    padding: 20px;
   }
   
+  .header h1 {
+    color: #764a1e; /* warm orange like sidebar title */
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .header p {
+    color: #a86017; /* same as sidebar text */
+    font-size: 1rem;
+    margin-top: 6px;
+  }
+
   input,
   select {
     margin: 10px;
@@ -50,7 +62,8 @@ body {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    background-color: #ffe6e6;
+    background-color: #ffecd1;
+    color: #b56620;
     transition: all 0.2s ease;
   }
   
@@ -60,6 +73,7 @@ body {
   
   .fav-btn.active {
     background-color: #ffd6a5;
+    color: #b56620;
   }
   
   /* ❤️ Toggle button */
@@ -71,6 +85,7 @@ body {
     background-color: #ffd6a5;
     cursor: pointer;
     transition: 0.2s;
+    color: #b56620; 
   }
   .toggle-btn:hover {
     background-color: #ffc98b;
@@ -89,3 +104,44 @@ body {
     color: #555;
   }
   
+  /* Make the whole layout side-by-side */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #fff7f7; /* soft pastel background */
+}
+
+/* Sidebar fixed width, stays on the left */
+.sidebar {
+  width: 220px;
+  background: linear-gradient(180deg, #ffecd1 0%, #fff6eb 100%); /* banner gradient */
+  border-right: 2px solid #ffd3a4; /* warm peach border */
+  padding: 1.8rem 1.5rem;
+  flex-shrink: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  transition: width 0.3s ease;
+}
+
+/* Push main content to the right */
+.main-content {
+  flex: 1;
+  margin-left: 220px; /* same as sidebar width */
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  color: #e67300;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar p {
+  color: #5a4634;
+  font-size: 0.9rem;
+  margin: 0;
+}
